@@ -35,7 +35,7 @@ body ts-message .message_content .meta.broadcast_meta {
   height: 0;
   overflow: hidden;
 }
-/* Thread arrow */
+/* Thread arrow, replaces thread link with arrow, so it's clickable straight to thead */
 body ts-message.first .message_content .meta.broadcast_meta a:before {
   display: block;
   content: '\E176';
@@ -47,8 +47,9 @@ body ts-message.first .message_content .meta.broadcast_meta a:before {
   transform: scaleY(-1);
 }
 
-body ts-message.first .message_content .meta.broadcast_meta a:before {
-'\E059'
+body ts-message.first.file_reference .message_content .meta.broadcast_meta a:before {
+  content: '\E059';
+}
 /*
 body [data-thread-ts].first:before {
   content: '\E176';
@@ -117,6 +118,5 @@ body .client_channels_list_container, body .p-channel_sidebar {
 body #team_menu {
   border-bottom-color: rgba(255, 255, 255,.1);
 }
-*/
-
+ */
 
