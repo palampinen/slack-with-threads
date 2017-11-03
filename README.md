@@ -1,9 +1,10 @@
 # Slack With Threads
-This is guide how to achieve Flowdock styled threads in Slack.
+Guide how to achieve Flowdock styled threads in Slack.
+
+![Threads](https://raw.githubusercontent.com/palampinen/slack-with-threads/master/thread.png)
 
 *Guide is only for Slack Mac App.*
 
-![Threads](https://raw.githubusercontent.com/palampinen/slack-with-threads/master/thread.png)
 
 # How to
 
@@ -51,3 +52,9 @@ document.addEventListener("DOMContentLoaded", function() { // eslint-disable-lin
 # What this does
 Loads css file from github server and inserts CSS (https://electron.atom.io/docs/api/webview-tag/#webviewinsertcsscss) to webviews. This might be considered dangerous since changes in file could mess your Slack client styles. CSS file could also be local or you can paste css code straight to index.js file and insert it without fetching.
 
+# What is needed for this kind of UI to work
+Thread messages should be posted to main chat. Unfortunately this is disabled by default (checkbox is unchecked).
+
+# Issues
+* File/Image threads do not work like text threads.
+* File/Image messages do not have general parent id (text threads have). This makes it more difficult to have same color for file threads.
