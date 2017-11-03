@@ -1,6 +1,9 @@
 # Slack With Threads
 This is guide how to achieve Flowdock styled threads in Slack.
+
 *Guide is only for Slack Mac App.*
+
+![Threads](https://raw.githubusercontent.com/palampinen/slack-with-threads/master/thread.png)
 
 # How to
 
