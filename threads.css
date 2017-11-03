@@ -2,6 +2,12 @@
   Stylesheet to mimic Flowdock legendary threads
 
   Starts each selector with 'body' to override styles
+
+  Slack icon font:
+  Camera: '\E121'
+  Speech bubble: '\E004'
+  File: '\E059'
+  Arrow: '\E176'
 */
 
 body ts-message {
