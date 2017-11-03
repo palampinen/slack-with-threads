@@ -11,7 +11,7 @@ Mac: open `/Applications/Slack.app/Contents/Resources/app.asar.unpacked/src/stat
 Windows: open `%HOME%\AppData\Local\slack\app-2.8.2\resources\app.asar.unpacked\src\static`
 *HOX check the app version in the path*
 
-After startup function add:
+Find function `startUp` and add after it:
 
 ```js
 var loadCustomStyle = function() {
@@ -31,7 +31,7 @@ var loadCustomStyle = function() {
 }
 ```
 
-And add function call after startup()
+And in `DOMContentLoaded` add one line where loadCustomStyles is called
 ```js
 document.addEventListener("DOMContentLoaded", function() { // eslint-disable-line
   try {
