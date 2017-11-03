@@ -5,6 +5,8 @@ Guide how to achieve Flowdock styled threads in Slack.
 
 *Guide is only for Slack Mac App.*
 
+Originally from https://gist.github.com/DrewML/0acd2e389492e7d9d6be63386d75dd99
+
 
 # How to
 
