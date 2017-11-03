@@ -5,7 +5,7 @@
 */
 
 body ts-message {
-  border-left: 4px solid blue;
+  border-left: 4px solid #DDD;
 }
 
 /* Thread colors for 10 different thread id suffix, you can add variation count to 100 if needed */
