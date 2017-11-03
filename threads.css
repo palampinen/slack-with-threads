@@ -86,15 +86,16 @@ body ts-message.file_reference:not(.comment_continuation):before  {
   transform: none;
 }
 
-/* Remove thread start indicators from conversations panel */
-body #convo_container [data-thread-ts]:before  {
+/* Remove thread start indicators from conversations panel and threads view */
+body #convo_container [data-thread-ts]:before,
+body #threads_msgs [data-thread-ts]:before
+{
   display: none;
 }
 
 body .thread_broadcast .broadcast_repliers {
   display: none;
 }
-
 
 /* Compact mode icons */
 body.no_avatars [data-thread-ts]:not(.thread_broadcast):before,
