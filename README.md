@@ -7,7 +7,8 @@ Guide how to achieve Flowdock styled threads in Slack. *Guide is only for deskto
 # How to
 
 Mac: open `/Applications/Slack.app/Contents/Resources/app.asar.unpacked/src/static/index.js`
-Win: open `%HOME%\AppData\Local\slack\app-2.8.2\resources\app.asar.unpacked\src\static`
+
+Windows: open `%HOME%\AppData\Local\slack\app-2.8.2\resources\app.asar.unpacked\src\static`
 
 After startup function add:
 
