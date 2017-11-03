@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function() { // eslint-disable-lin
 });
 ```
 
+*Restart Slack and you should have Threads*
 
 # What this does
 Loads css file from github server and inserts CSS (https://electron.atom.io/docs/api/webview-tag/#webviewinsertcsscss) to webviews. This might be considered dangerous since changes in file could mess your Slack client styles. CSS file could also be local or you can paste css code straight to index.js file and insert it without fetching.
