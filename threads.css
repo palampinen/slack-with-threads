@@ -83,6 +83,7 @@ body [data-thread-ts]:not(.thread_broadcast):before, body ts-message.file_refere
 /* File icon */
 body ts-message.file_reference:not(.comment_continuation):before  {
   content: '\E059';
+  transform: none;
 }
 
 /* Remove thread start indicators from conversations panel */
