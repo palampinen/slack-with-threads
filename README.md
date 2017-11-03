@@ -1,12 +1,16 @@
 # Slack With Threads
-Guide how to achieve Flowdock styled threads in Slack. *Guide is only for Slack Mac App.*
+Guide how to achieve Flowdock styled threads in Slack. *Guide is only for desktop Slack Mac & Win Applications.*
 
 ![Threads](https://raw.githubusercontent.com/palampinen/slack-with-threads/master/thread.png)
 
 
 # How to
 
-open `/Applications/Slack.app/Contents/Resources/app.asar.unpacked/src/static/index.js`
+Mac: open `/Applications/Slack.app/Contents/Resources/app.asar.unpacked/src/static/index.js`
+
+* HOX check the app version in the path *
+Windows: open `%HOME%\AppData\Local\slack\app-2.8.2\resources\app.asar.unpacked\src\static`
+
 
 After startup function add:
 
