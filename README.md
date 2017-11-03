@@ -31,7 +31,7 @@ var loadCustomStyle = function() {
 }
 ```
 
-And in `DOMContentLoaded` add one line where loadCustomStyles is called
+And in `DOMContentLoaded` add one line where loadCustomStyle will be called
 ```js
 document.addEventListener("DOMContentLoaded", function() { // eslint-disable-line
   try {
