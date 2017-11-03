@@ -5,9 +5,6 @@ Guide how to achieve Flowdock styled threads in Slack.
 
 *Guide is only for Slack Mac App.*
 
-Originally from https://gist.github.com/DrewML/0acd2e389492e7d9d6be63386d75dd99
-
-
 # How to
 
 open `/Applications/Slack.app/Contents/Resources/app.asar.unpacked/src/static/index.js`
@@ -65,3 +62,7 @@ Thread messages should be posted to main chat. Unfortunately this is disabled by
 
 ## Developer menu
 In your terminal run the command `launchctl setenv SLACK_DEVELOPER_MENU true` and restart Slack. Now devloper menu is available.
+
+
+
+Originally from https://gist.github.com/DrewML/0acd2e389492e7d9d6be63386d75dd99
