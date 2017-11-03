@@ -60,3 +60,8 @@ Thread messages should be posted to main chat. Unfortunately this is disabled by
 # Issues
 * File/Image threads do not work like text threads.
 * File/Image messages do not have general parent id (text threads have). This makes it more difficult to have same color for file threads.
+
+# Development
+
+## Developer menu
+In your terminal run the command `launchctl setenv SLACK_DEVELOPER_MENU true` and restart Slack. Now devloper menu is available.
