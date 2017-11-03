@@ -30,6 +30,8 @@ body [data-thread-ts$="6"]:before, body [data-thread-ts$="6"] .message_content .
 body [data-thread-ts$="7"]:before, body [data-thread-ts$="7"] .message_content .meta.broadcast_meta a:before { color: #5de2c3 }
 body [data-thread-ts$="8"]:before, body [data-thread-ts$="8"] .message_content .meta.broadcast_meta a:before { color: #f475c4 }
 body [data-thread-ts$="9"]:before, body [data-thread-ts$="9"] .message_content .meta.broadcast_meta a:before { color: #936fe2 }
+
+/* Hide thread broadcast message and use icon instead */
 body ts-message .message_content .meta.broadcast_meta {
   width: 0;
   height: 0;
@@ -47,23 +49,6 @@ body ts-message.first .message_content .meta.broadcast_meta a:before {
   transform: scaleY(-1);
 }
 
-body ts-message.first.file_reference .message_content .meta.broadcast_meta a:before {
-  content: '\E059';
-}
-/*
-body [data-thread-ts].first:before {
-  content: '\E176';
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  font-family: 'Slack';
-  transform: scaleY(-1);
-  font-size: 16px;
-}
-*/
-
-
-
 /* Style File comments as threads, with 2 variations */
 body ts-message.file_reference:not(.comment_continuation),
 body ts-message.file_reference:not(.comment_continuation) ~ .comment_continuation { border-left-color: #949fe0; }
@@ -79,18 +64,6 @@ body ts-message.file_reference:nth-child(2n):not(.comment_continuation) ~ .comme
 
 
 body [data-thread-ts]:not(.thread_broadcast):before, body ts-message.file_reference:not(.comment_continuation):before {
-
-  /* Adds a little tip for first message of thread
-  content: '';
-  display: block;
-  top: 0;
-  height: 4px;
-  position: absolute;
-  border-left-color: inherit;
-  border-left-width: 3px;
-  border-left-style: solid;
-  */
-
   /* Thread start speech bubble */
   content: '\E004';
   position: absolute;
@@ -100,6 +73,12 @@ body [data-thread-ts]:not(.thread_broadcast):before, body ts-message.file_refere
   transform: scaleX(-1);
   font-size: 17px;
 }
+
+/* File icon */
+body ts-message.file_reference:not(.comment_continuation):before  {
+  content: '\E059';
+}
+
 /* Remove thread start indicators from conversations panel */
 body #convo_container [data-thread-ts]:before  {
   display: none;
@@ -109,14 +88,12 @@ body .thread_broadcast .broadcast_repliers {
   display: none;
 }
 
-
-
-/* Sidepanel
+/* Flowdock like sidepanel, commented out since one can change sidepanel theme already from Slack settings
 body .client_channels_list_container, body .p-channel_sidebar {
   background: #171B1D
 }
 body #team_menu {
   border-bottom-color: rgba(255, 255, 255,.1);
 }
- */
+*/
 
