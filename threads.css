@@ -1,0 +1,122 @@
+/*
+  Stylesheet to mimic Flowdock legendary threads
+
+  Starts each selector with 'body' to override styles
+*/
+
+body ts-message {
+  border-left: 4px solid #ddd;
+}
+
+/* Thread colors for 10 different thread id suffix, you can add variation count to 100 if needed */
+body [data-thread-ts$="0"] { border-left-color: #D7A6D7 }
+body [data-thread-ts$="1"] { border-left-color: #8C148C }
+body [data-thread-ts$="2"] { border-left-color: #38c43f }
+body [data-thread-ts$="3"] { border-left-color: #FD8D23 }
+body [data-thread-ts$="4"] { border-left-color: #f7d438 }
+body [data-thread-ts$="5"] { border-left-color: #6b6bb7 }
+body [data-thread-ts$="6"] { border-left-color: #fd8b67 }
+body [data-thread-ts$="7"] { border-left-color: #5de2c3 }
+body [data-thread-ts$="8"] { border-left-color: #f475c4 }
+body [data-thread-ts$="9"] { border-left-color: #936fe2 }
+
+body [data-thread-ts$="0"]:before, body [data-thread-ts$="0"] .message_content .meta.broadcast_meta a:before { color: #D7A6D7 }
+body [data-thread-ts$="1"]:before, body [data-thread-ts$="1"] .message_content .meta.broadcast_meta a:before { color: #8C148C }
+body [data-thread-ts$="2"]:before, body [data-thread-ts$="2"] .message_content .meta.broadcast_meta a:before { color: #38c43f }
+body [data-thread-ts$="3"]:before, body [data-thread-ts$="3"] .message_content .meta.broadcast_meta a:before { color: #FD8D23 }
+body [data-thread-ts$="4"]:before, body [data-thread-ts$="4"] .message_content .meta.broadcast_meta a:before { color: #f7d438 }
+body [data-thread-ts$="5"]:before, body [data-thread-ts$="5"] .message_content .meta.broadcast_meta a:before { color: #6b6bb7 }
+body [data-thread-ts$="6"]:before, body [data-thread-ts$="6"] .message_content .meta.broadcast_meta a:before { color: #fd8b67 }
+body [data-thread-ts$="7"]:before, body [data-thread-ts$="7"] .message_content .meta.broadcast_meta a:before { color: #5de2c3 }
+body [data-thread-ts$="8"]:before, body [data-thread-ts$="8"] .message_content .meta.broadcast_meta a:before { color: #f475c4 }
+body [data-thread-ts$="9"]:before, body [data-thread-ts$="9"] .message_content .meta.broadcast_meta a:before { color: #936fe2 }
+body ts-message .message_content .meta.broadcast_meta {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+/* Thread arrow */
+body ts-message.first .message_content .meta.broadcast_meta a:before {
+  display: block;
+  content: '\E176';
+  position: absolute;
+  left: 3px;
+  top: 0;
+  font-size: 17px;
+  font-family: Slack;
+  transform: scaleY(-1);
+}
+
+body ts-message.first .message_content .meta.broadcast_meta a:before {
+'\E059'
+/*
+body [data-thread-ts].first:before {
+  content: '\E176';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  font-family: 'Slack';
+  transform: scaleY(-1);
+  font-size: 16px;
+}
+*/
+
+
+
+/* Style File comments as threads, with 2 variations */
+body ts-message.file_reference:not(.comment_continuation),
+body ts-message.file_reference:not(.comment_continuation) ~ .comment_continuation { border-left-color: #949fe0; }
+
+body ts-message.file_reference:nth-child(2n):not(.comment_continuation),
+body ts-message.file_reference:nth-child(2n):not(.comment_continuation) ~ .comment_continuation { border-left-color: #e57b79; }
+
+body ts-message.file_reference:not(.comment_continuation):before,
+body ts-message.file_reference:not(.comment_continuation) ~ .comment_continuation:before { color: #949fe0; }
+
+body ts-message.file_reference:nth-child(2n):not(.comment_continuation):before,
+body ts-message.file_reference:nth-child(2n):not(.comment_continuation) ~ .comment_continuation:before { color: #e57b79; }
+
+
+body [data-thread-ts]:not(.thread_broadcast):before, body ts-message.file_reference:not(.comment_continuation):before {
+
+  /* Adds a little tip for first message of thread
+  content: '';
+  display: block;
+  top: 0;
+  height: 4px;
+  position: absolute;
+  border-left-color: inherit;
+  border-left-width: 3px;
+  border-left-style: solid;
+  */
+
+  /* Thread start speech bubble */
+  content: '\E004';
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  font-family: 'Slack';
+  transform: scaleX(-1);
+  font-size: 17px;
+}
+/* Remove thread start indicators from conversations panel */
+body #convo_container [data-thread-ts]:before  {
+  display: none;
+}
+
+body .thread_broadcast .broadcast_repliers {
+  display: none;
+}
+
+
+
+/* Sidepanel
+body .client_channels_list_container, body .p-channel_sidebar {
+  background: #171B1D
+}
+body #team_menu {
+  border-bottom-color: rgba(255, 255, 255,.1);
+}
+*/
+
+
