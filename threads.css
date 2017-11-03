@@ -94,12 +94,10 @@ body .thread_broadcast .broadcast_repliers {
   display: none;
 }
 
-/* Flowdock like sidepanel, commented out since one can change sidepanel theme already from Slack settings
-body .client_channels_list_container, body .p-channel_sidebar {
-  background: #171B1D
-}
-body #team_menu {
-  border-bottom-color: rgba(255, 255, 255,.1);
-}
-*/
 
+/* Compact mode icons */
+body.no_avatars [data-thread-ts]:not(.thread_broadcast):before,
+body.no_avatars ts-message.file_reference:not(.comment_continuation):before,
+body ts-message.first .message_content .meta.broadcast_meta a:before  {
+  top: 20px;
+}
