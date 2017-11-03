@@ -10,7 +10,7 @@ After startup function add:
 
 ```js
 var loadCustomStyle = function() {
-  var cssURL = 'https://gist.githubusercontent.com/palampinen/733c88d530fcc9bead0030204f0763c6/raw/38fe0f9453c51caa34d52e8428406b4e17211f64/threads.css';
+  var cssURL = 'https://raw.githubusercontent.com/palampinen/slack-with-threads/master/threads.css';
   var cssPromise = fetch(cssURL).then(response => response.text());
 
   var webviews = document.querySelectorAll(".TeamView webview");
