@@ -64,7 +64,7 @@ Thread messages should be posted to main chat. Unfortunately this is disabled by
 # Development
 
 ## Developer menu
-In your terminal run the command `launchctl setenv SLACK_DEVELOPER_MENU true` and restart Slack. Now devloper menu is available.
+In your terminal run the command `launchctl setenv SLACK_DEVELOPER_MENU true` and restart Slack. Now developer menu is available: *Right Click > Inspect Element*.
 
 
 
