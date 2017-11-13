@@ -10,9 +10,13 @@
   Arrow: '\E176'
 */
 
-body ts-message {
-  border-left: 4px solid #DDD;
-}
+
+/**
+  Message Threads
+**/
+
+/* Add thread line */
+body ts-message[data-thread-ts] { border-left: 4px solid #DDD; }
 
 /* Thread colors for 10 different thread id suffix, you can add variation count to 100 if needed */
 body [data-thread-ts$="0"] { border-left-color: #D7A6D7 }
@@ -43,6 +47,7 @@ body ts-message .message_content .meta.broadcast_meta {
   height: 0;
   overflow: hidden;
 }
+
 /* Thread arrow, replaces thread link with arrow, so it's clickable straight to thead */
 body ts-message.first .message_content .meta.broadcast_meta a:before {
   display: block;
@@ -55,21 +60,7 @@ body ts-message.first .message_content .meta.broadcast_meta a:before {
   transform: scaleY(-1);
 }
 
-/* Style File comments as threads, with 2 variations */
-body ts-message.file_reference:not(.comment_continuation),
-body ts-message.file_reference:not(.comment_continuation) ~ .comment_continuation { border-left-color: #949fe0; }
-
-body ts-message.file_reference:nth-child(2n):not(.comment_continuation),
-body ts-message.file_reference:nth-child(2n):not(.comment_continuation) ~ .comment_continuation { border-left-color: #e57b79; }
-
-body ts-message.file_reference:not(.comment_continuation):before,
-body ts-message.file_reference:not(.comment_continuation) ~ .comment_continuation:before { color: #949fe0; }
-
-body ts-message.file_reference:nth-child(2n):not(.comment_continuation):before,
-body ts-message.file_reference:nth-child(2n):not(.comment_continuation) ~ .comment_continuation:before { color: #e57b79; }
-
-
-body [data-thread-ts]:not(.thread_broadcast):before, body ts-message.file_reference:not(.comment_continuation):before {
+body [data-thread-ts]:not(.thread_broadcast):before {
   /* Thread start speech bubble */
   content: '\E004';
   position: absolute;
@@ -80,13 +71,68 @@ body [data-thread-ts]:not(.thread_broadcast):before, body ts-message.file_refere
   font-size: 17px;
 }
 
-/* File icon */
-body ts-message.file_reference:not(.comment_continuation):before  {
-  content: '\E059';
-  transform: none;
+
+/**
+ File Threads
+
+ Timestamp link contains target attribute with thread id
+**/
+
+/* timestamp cannot be relative if we want get pseudo element out of it */
+body ts-message.file_reference .time_star_and_extra_metadata .timestamp { position: static; }
+
+/* add file thread line */
+body ts-message.file_reference .time_star_and_extra_metadata .timestamp:after {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 0;
+  z-index: 9;
+  width: 4px;
+  height: 100%;
 }
 
-/* Remove thread start indicators from conversations panel and threads view */
+/* color file thread lines */
+body ts-message.file_reference .time_star_and_extra_metadata .timestamp[target$="0"]:after { background: #D7A6D7 }
+body ts-message.file_reference .time_star_and_extra_metadata .timestamp[target$="1"]:after { background: #8C148C }
+body ts-message.file_reference .time_star_and_extra_metadata .timestamp[target$="2"]:after { background: #38c43f }
+body ts-message.file_reference .time_star_and_extra_metadata .timestamp[target$="3"]:after { background: #FD8D23 }
+body ts-message.file_reference .time_star_and_extra_metadata .timestamp[target$="4"]:after { background: #f7d438 }
+body ts-message.file_reference .time_star_and_extra_metadata .timestamp[target$="5"]:after { background: #6b6bb7 }
+body ts-message.file_reference .time_star_and_extra_metadata .timestamp[target$="6"]:after { background: #fd8b67 }
+body ts-message.file_reference .time_star_and_extra_metadata .timestamp[target$="7"]:after { background: #5de2c3 }
+body ts-message.file_reference .time_star_and_extra_metadata .timestamp[target$="8"]:after { background: #f475c4 }
+body ts-message.file_reference .time_star_and_extra_metadata .timestamp[target$="9"]:after { background: #936fe2 }
+
+/* add file thread icon */
+body ts-message.file_reference.first:not(.comment_continuation) .time_star_and_extra_metadata .timestamp:before {
+  content: '\E059';
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  font-family: Slack;
+  transform: scaleX(-1);
+  font-size: 17px;
+}
+
+/* color file thread icons */
+body ts-message.file_reference.first:not(.comment_continuation) .time_star_and_extra_metadata .timestamp[target$="0"]:before { color: #D7A6D7 }
+body ts-message.file_reference.first:not(.comment_continuation) .time_star_and_extra_metadata .timestamp[target$="1"]:before { color: #8C148C }
+body ts-message.file_reference.first:not(.comment_continuation) .time_star_and_extra_metadata .timestamp[target$="2"]:before { color: #38c43f }
+body ts-message.file_reference.first:not(.comment_continuation) .time_star_and_extra_metadata .timestamp[target$="3"]:before { color: #FD8D23 }
+body ts-message.file_reference.first:not(.comment_continuation) .time_star_and_extra_metadata .timestamp[target$="4"]:before { color: #f7d438 }
+body ts-message.file_reference.first:not(.comment_continuation) .time_star_and_extra_metadata .timestamp[target$="5"]:before { color: #6b6bb7 }
+body ts-message.file_reference.first:not(.comment_continuation) .time_star_and_extra_metadata .timestamp[target$="6"]:before { color: #fd8b67 }
+body ts-message.file_reference.first:not(.comment_continuation) .time_star_and_extra_metadata .timestamp[target$="7"]:before { color: #5de2c3 }
+body ts-message.file_reference.first:not(.comment_continuation) .time_star_and_extra_metadata .timestamp[target$="8"]:before { color: #f475c4 }
+body ts-message.file_reference.first:not(.comment_continuation) .time_star_and_extra_metadata .timestamp[target$="9"]:before { color: #936fe2 }
+
+
+/**
+  Converstaion Panel & Threads View
+**/
+
+/* Remove thread start indicators */
 body #convo_container [data-thread-ts]:before,
 body #threads_msgs [data-thread-ts]:before
 {
@@ -97,9 +143,15 @@ body .thread_broadcast .broadcast_repliers {
   display: none;
 }
 
-/* Compact mode icons */
+/**
+  Compact mode
+**/
+
+/* Adjust icons lower from name */
 body.no_avatars [data-thread-ts]:not(.thread_broadcast):before,
 body.no_avatars ts-message.file_reference:not(.comment_continuation):before,
 body ts-message.first .message_content .meta.broadcast_meta a:before  {
   top: 20px;
 }
+
+
