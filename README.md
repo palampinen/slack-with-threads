@@ -16,32 +16,29 @@ Windows: open
 `%HOME%\AppData\Local\slack\app-3.0.0\resources\app.asar.unpacked\src\static\ssb-interop.js`
 _HOX check the app version in the path_
 
-Add in bottom of file after `init`:
+Add in bottom of file:
 
-```diff
-  init(resourcePath, mainModule, !isDevMode);
+```
+  document.addEventListener("DOMContentLoaded", function() {
+    var cssURL = "https://raw.githubusercontent.com/palampinen/slack-with-threads/master/threads.css";
+    var cssPromise = fetch(cssURL).then(response => response.text());
 
-+ document.addEventListener("DOMContentLoaded", function() {
-+   var cssURL = "https://raw.githubusercontent.com/palampinen/slack-with-threads/master/threads.css";
-+   var cssPromise = fetch(cssURL).then(response => response.text());
-
-+   cssPromise.then(function(css) {
-+     $("<style></style>")
-+       .appendTo("head")
-+       .html(css);
-+   });
-+ });
+    cssPromise.then(function(css) {
+      $("<style></style>")
+        .appendTo("head")
+        .html(css);
+    });
+  });
 ```
 
 _Restart Slack and you should have Threads_
 
 # What this does
 
-Loads css file from github server and inserts CSS
-(https://electron.atom.io/docs/api/webview-tag/#webviewinsertcsscss) to
-webviews. This might be considered dangerous since changes in file could mess
-your Slack client styles. CSS file could also be local or you can paste css code
-straight to index.js file and insert it without fetching.
+Loads CSS file from github server and inserts CSS inside a style tag which is
+appended to head. This might be considered dangerous since changes in file could
+mess your Slack client styles. CSS file could also be local or you can paste css
+code straight to index.js file and insert it without fetching.
 
 # What is needed for this kind of UI to work
 
