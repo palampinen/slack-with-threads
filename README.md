@@ -1,71 +1,64 @@
 # Slack With Threads
-Guide how to achieve Flowdock styled threads in Slack. *Guide is only for desktop Slack Mac & Win Applications.*
+
+Guide how to achieve Flowdock styled threads in Slack. _Guide is only for
+desktop Slack Mac & Win Applications._
 
 ![Threads](https://raw.githubusercontent.com/palampinen/slack-with-threads/master/thread.png)
 
+Tested with Slack client version 3.0.
 
 # How to
 
-Mac: open `/Applications/Slack.app/Contents/Resources/app.asar.unpacked/src/static/index.js`
+Mac: open
+`/Applications/Slack.app/Contents/Resources/app.asar.unpacked/src/static/ssb-interop.js`
 
-Windows: open `%HOME%\AppData\Local\slack\app-2.8.2\resources\app.asar.unpacked\src\static`
-*HOX check the app version in the path*
+Windows: open
+`%HOME%\AppData\Local\slack\app-3.0.0\resources\app.asar.unpacked\src\static\ssb-interop.js`
+_HOX check the app version in the path_
 
-Find function `startup` and add after it:
+Add in bottom of file after `init`:
 
-```js
-var loadCustomStyle = function() {
-  var cssURL = 'https://raw.githubusercontent.com/palampinen/slack-with-threads/master/threads.css';
-  var cssPromise = fetch(cssURL).then(response => response.text());
-
-  var webviews = document.querySelectorAll(".TeamView webview");
-  webviews.forEach(webview => {
-    webview.addEventListener('ipc-message', message => {
-      if (message.channel == 'didFinishLoading') {
-        cssPromise.then(function(css) {
-          webview.insertCSS(css);
-        });
-      }
-    });
-   });
-}
-```
-
-And in `DOMContentLoaded` add one line where loadCustomStyle will be called
 ```diff
-document.addEventListener("DOMContentLoaded", function() { // eslint-disable-line
-  try {
-    startup();
-+   loadCustomStyle(); // <-- Add this line
-  } catch (e) {
-    console.log(e.stack);
+  init(resourcePath, mainModule, !isDevMode);
 
-    if (window.Bugsnag) {
-      window.Bugsnag.notifyException(e, "Renderer crash");
-    }
++ document.addEventListener("DOMContentLoaded", function() {
++   var cssURL = "https://raw.githubusercontent.com/palampinen/slack-with-threads/master/threads.css";
++   var cssPromise = fetch(cssURL).then(response => response.text());
 
-    throw e;
-  }
-});
++   cssPromise.then(function(css) {
++     $("<style></style>")
++       .appendTo("head")
++       .html(css);
++   });
++ });
 ```
 
-*Restart Slack and you should have Threads*
+_Restart Slack and you should have Threads_
 
 # What this does
-Loads css file from github server and inserts CSS (https://electron.atom.io/docs/api/webview-tag/#webviewinsertcsscss) to webviews. This might be considered dangerous since changes in file could mess your Slack client styles. CSS file could also be local or you can paste css code straight to index.js file and insert it without fetching.
+
+Loads css file from github server and inserts CSS
+(https://electron.atom.io/docs/api/webview-tag/#webviewinsertcsscss) to
+webviews. This might be considered dangerous since changes in file could mess
+your Slack client styles. CSS file could also be local or you can paste css code
+straight to index.js file and insert it without fetching.
 
 # What is needed for this kind of UI to work
-Thread messages should be posted to main chat. Unfortunately this is disabled by default (checkbox is unchecked).
+
+Thread messages should be posted to main chat. Unfortunately this is disabled by
+default (checkbox is unchecked).
 
 # Issues
+
 * File/Image threads do not work like text threads.
-* File/Image messages do not have general thread id (like text threads have). This makes it more difficult to color code file threads consistently.
+* File/Image messages do not have general thread id (like text threads have).
+  This makes it more difficult to color code file threads consistently.
 
 # Development
 
 ## Developer menu
-In your terminal run the command `launchctl setenv SLACK_DEVELOPER_MENU true` and restart Slack. Now devloper menu is available.
 
-
+In your terminal run the command `launchctl setenv SLACK_DEVELOPER_MENU true`
+and restart Slack. Now devloper menu is available.
 
 Originally from https://gist.github.com/DrewML/0acd2e389492e7d9d6be63386d75dd99
